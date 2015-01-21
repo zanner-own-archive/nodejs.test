@@ -13,6 +13,9 @@ console.log('server host: ' + argv.host + ':' + argv.port);
 // http://expressjs.com/api.html#app-settings
 var express = require('express');
 var app = express();
+// https://www.npmjs.com/package/node-static
+var static = require('node-static');
+var file = new static.Server('./public');
 // https://www.npmjs.com/package/ejs
 var ejs = require('ejs');
 // https://docs.nodejitsu.com/articles/file-system/how-to-read-files-in-nodejs
