@@ -1,5 +1,6 @@
 //#!/usr/bin/env node
 
+// TextWrangler
 console.log('server starting ...');
 // http://nodeguide.ru/doc/
 var argv = require('optimist')
