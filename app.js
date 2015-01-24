@@ -23,14 +23,14 @@ var ejs = require('ejs');
 // http://nodejs.org/api/fs.html#fs_fs_read_fd_buffer_offset_length_position_callback
 var fs = require('fs');
 
-app.get('/', function (req, res){
+app.get('/', function (req, res, next){
 		//res.writeHead(200, {'Content-Type': 'text/html'});
 		fs.readFile('tpl/show.html', 'utf8', function (err, data) {
 			if (err) throw err;
 			res.send(data);
 // http://www.w3schools.com/html/html5_canvas.asp
 // http://habrahabr.ru/post/111308/
-			//console.log(data);
+			//console.log(data);s
 		});
 	});
 
