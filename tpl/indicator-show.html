@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>indicators</title>
+	<meta charset="utf-8">
+	<script type="application/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script type="application/javascript">
+		function waterColdSummary() {
+			var x = Number($('.water .cold .kitchen').val()) + Number($('.water .cold .bath').val());
+			x = Math.round(x * 100)/100;
+			$('.water .cold .summary').val(x);
+		}
+		function waterHotSummary() {
+			var x = Number($('.water .hot .kitchen').val()) + Number($('.water .hot .bath').val());
+			x = Math.round(x * 100)/100;
+			$('.water .hot .summary').val(x);
+		}
+	</script>
+	<style type="text/css">
+		fieldset { display: inline-block; margin: .2em 0em; padding: 0em .5em; vertical-align: top; }
+		fieldset dl dt { float: left; width: 6em; }
+		fieldset dl dt:after { content: ":"; }
+		fieldset dl dd { margin-left: 6.1em; position: relative; text-align: right; }
+		fieldset input { width: 5em; text-align: right; }
+		fieldset input:read-only { border: none; }
+		.price { color: red; font-weight: bold; }
+		.summary { font-weight: bold; }
+	</style>
+</head>
+
+<body>
+	<div id="form-add">
+		<form method="post" action="" >
+			<fieldset class="water">
+				<legend>Вода</legend>
+				<fieldset class="cold">
+					<legend>холодная</legend>
+					<dl>
+						<dt>Кухня</dt>
+						<dd><input class="kitchen" name="data[water][cold][kitchen]" type="number" step="0.01" pattern="[\d]+[\.][\d]{2}" placeholder="0.00" autofocus="autofocus"> м<sup style="font-size: xx-small">3</sup></dd>
+						<dt>Ванная</dt>
+						<dd><input class="bath" name="data[water][cold][bath]" type="number" step="0.01" pattern="[\d]+[\.][\d]{2}" placeholder="0.00" autofocus="autofocus"> м<sup style="font-size: xx-small">3</sup></dd>
+						<dt>Сумма</dt>
+						<dd><input class="summary" name="data[water][cold][summary]" type="number" step="0.01" readonly="readonly"> м<sup style="font-size: xx-small">3</sup></dd>
+					</dl>
+				</fieldset>
+				<fieldset class="hot">
+					<legend>горячая</legend>
+					<dl>
+						<dt>Кухня</dt>
+						<dd><input class="kitchen" name="data[water][hot][kitchen]" type="number" step="0.1" pattern="[\d]+[\.][\d]{2}" placeholder="0.00" autofocus="autofocus"> м<sup style="font-size: xx-small">3</sup></dd>
+						<dt>Ванная</dt>
+						<dd><input class="bath" name="data[water][hot][bath]" type="number" step="0.1" pattern="[\d]+[\.][\d]{2}" placeholder="0.00" autofocus="autofocus"> м<sup style="font-size: xx-small">3</sup></dd>
+						<dt>Сумма</dt>
+						<dd><input class="summary" name="data[water][hot][summary]" type="text" value="0" readonly="readonly"> м<sup style="font-size: xx-small">3</sup></dd>
+					</dl>
+				</fieldset>
+			</fieldset>
+			<fieldset>
+				<legend>Электричество</legend>
+				<dl>
+					<dt>Показания</dt>
+					<dd><input class="summary" name="data[energy][summary]" type="number" step="1" pattern="[\d]+" placeholder="0" autofocus="autofocus"> кВт</dd>
+				</dl>
+			</fieldset>
+			<fieldset>
+				<legend>Телефон</legend>
+				<dl>
+					<dt>Итого</dt>
+					<dd><input class="price" name="data[phone][price]" type="number" step="0.01" pattern="[\d]+[\.][\d]{2}" placeholder="0.00" autofocus="autofocus"> грн</dd>
+				</dl>
+			</fieldset>
+		</form>
+	</div>
+	<div>
+		<table border="1" style="border-collapse: collapse; width: 100%;">
+			<thead>
+				<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</body>
+
+<script type="application/javascript">
+	waterColdSummary();
+	waterHotSummary();
+	$('.water .cold .kitchen').bind("change", function(){ waterColdSummary(); });
+	$('.water .cold .bath').bind("change", function(){ waterColdSummary(); });
+	$('.water .hot .kitchen').bind("change", function(){ waterHotSummary(); });
+	$('.water .hot .bath').bind("change", function(){ waterHotSummary(); });
+</script>
+
+</html>
