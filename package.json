@@ -2,11 +2,18 @@
   "name": "nodejs.test",
   "version": "0.0.1",
   "description": "",
-  "main": "app.js",
+  "main": "indicators.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "sergej.kucharev@gmail.com",
+  "author": {
+    "name": "Sergey Kukharev",
+    "email": "sergej.kucharev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sergej-kucharev/nodejs.test"
+  },
   "license": "",
   "dependencies": {
     "express": ">= 1.2.0",
