@@ -9,16 +9,16 @@ var ejs = require('ejs');
 
 
 app.get('/', function(req, res, next) {
-    fs.readFile('tpl/indicator-show.html', function (tplErr, tplOk) {
-        if (tplErr) {
-            console.log(tplErr);
+    fs.readFile('tpl/indicator-show.html', {encoding: 'utf-8'}, function (err, data) {
+        if (err) { // code are described in libUV in github
+            console.log(err);
             res.statusCode = 500;
             res.end('Tpl error');
         }
         else {
             res.setHeader('Content-Type', 'text/html');
             //var html = new ejs(tpl).render(data);
-            res.send(tplOk);
+            res.send(data);
             res.end();
         }
     });
