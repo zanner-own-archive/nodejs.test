@@ -8,12 +8,12 @@ var server = new http.Server(function(req, res) {
 	/**/
 	var urlParsed = url.parse(req.url, true);
 	console.log(urlParsed);
-
+	
 	if (urlParsed.pathname == '/echo' && urlParsed.query.message) {
 		res.statusCode = 200;
-		res.writeHead(200, "Ok", {'Cache-control': 'no-cache'}); // немедленная отправка
+		//res.writeHead(200, "Ok", {'Cache-control': 'no-cache'}); // немедленная отправка
 		res.setHeader('Cache-control', 'no-cache'); // removeHeader
-		res.end(urlParsed.query.message);
+		res.end(urlParsed.query.message + 'x');
 	} else {
 		res.statusCode = 404;
 		res.end('Page not found');
