@@ -10,6 +10,7 @@ var argv = require('optimist')
 	.default('port', 4000)
 	.argv;
 console.log('server host: ' + argv.host + ':' + argv.port);
+var debug = require('debug')('app.js');
 
 // http://expressjs.com/api.html#app-settings
 var express = require('express');
@@ -24,6 +25,7 @@ var ejs = require('ejs');
 var fs = require('fs');
 
 app.get('/', function (req, res, next){
+        debugger;
 		//res.writeHead(200, {'Content-Type': 'text/html'});
 		fs.readFile('tpl/show.html', 'utf8', function (err, data) {
 			if (err) throw err;
