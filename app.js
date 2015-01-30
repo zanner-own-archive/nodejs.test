@@ -27,13 +27,12 @@ var fs = require('fs');
 app.get('/', function (req, res, next){
         debugger;
 		//res.writeHead(200, {'Content-Type': 'text/html'});
-		fs.readFile('tpl/show.html', 'utf8', function (err, data) {
-			if (err) throw err;
-			res.send(data);
+		var tpl = fs.readFileSync('tpl/show.html', 'utf8');
 // http://www.w3schools.com/html/html5_canvas.asp
 // http://habrahabr.ru/post/111308/
-			//console.log(data);s
-		});
+        res.send(tpl);
+        //console.log(tlp);
+        res.end();
 	});
 
 app.get('/test', function (req, res){
