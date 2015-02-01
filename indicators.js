@@ -5,10 +5,12 @@ console.log('indicators.js starting ...');
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var url = require('url');
+var path = require('path');
 var ejs = require('ejs');
 
 
-app.get('/', function(req, res, next) {
+app.get('/', function (req, res, next) {
     fs.readFile('tpl/indicator-show.html', {encoding: 'utf-8'}, function (err, data) {
         if (err) { // code are described in libUV in github
             console.log(err);
@@ -22,6 +24,10 @@ app.get('/', function(req, res, next) {
             res.end();
         }
     });
+});
+
+app.get('/public/.*', function (req, res, next) {
+
 });
 
 console.log('indicators.js binging port 4000');
