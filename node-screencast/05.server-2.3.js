@@ -7,19 +7,19 @@ var server = new http.Server(function(req, res) {
 	console.log(req.headers);
 	/**/
 	var urlParsed = url.parse(req.url, true);
-	console.log(urlParsed);
-	
+	//console.log(urlParsed);
+	debugger;
 	if (urlParsed.pathname == '/echo' && urlParsed.query.message) {
 		res.statusCode = 200;
 		//res.writeHead(200, "Ok", {'Cache-control': 'no-cache'}); // немедленная отправка
 		res.setHeader('Cache-control', 'no-cache'); // removeHeader
-		res.end(urlParsed.query.message + 'x');
+		res.send(urlParsed.query.message + '!');
 	} else {
 		res.statusCode = 404;
-		res.end('Page not found');
+		res.send('Page not found');
 	}
 	/**/
-	res.end();
+	res.end('');
 });
 
 server.listen(1337, '127.0.0.1');

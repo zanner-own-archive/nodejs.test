@@ -26,8 +26,19 @@ app.get('/', function (req, res, next) {
     });
 });
 
-app.get('/public/.*', function (req, res, next) {
-
+app.get('/public/*', function (req, res, next) {
+	var q = url.parse(req.url, true);
+	var filePath = q.path;
+	try {
+		filePath = decodeURIComponent(filePath);
+	}
+	catch (e) {
+		res.statusCode = 404;
+		res.end('Error 1');
+	}
+	console.log(filePath);
+	res.send(filePath);
+	res.end('!');
 });
 
 console.log('indicators.js binging port 4000');
